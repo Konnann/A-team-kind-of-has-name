@@ -50,5 +50,15 @@ class Ball {
 
         }
     }
+
+    split(balls)
+    {
+        let ball1 = new Ball(this.x - 3,this.y + 3, this.r);
+        let ball2 = new Ball(this.x + 3,this.y + 3, this.r);
+        //delete this ball in balls. Find where it is here or in main update ?
+        balls.add(ball1).add(ball2);
+
+        //delete ball ?
+    }
 }
 
