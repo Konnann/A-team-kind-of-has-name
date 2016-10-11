@@ -5,6 +5,11 @@ function render(){
     canvas.src = "./src/background.png";
     ctx.drawImage(canvas, 0, 0);
     arr.draw(ctx);
+    for(let ball of balls)
+    {
+        ball.draw(ctx);
+    }
+
     ball.draw(ctx);
     hero.draw(ctx);
 }
