@@ -4,7 +4,7 @@ function render(){
     let canvas = new Image();
     canvas.src = "./src/background.png";
     ctx.drawImage(canvas, 0, 0);
-    ctx.clearRect(0,0,800,600);
+   // ctx.clearRect(0,0,800,600);
     arr.draw(ctx);
     for(let ball of balls)
     {

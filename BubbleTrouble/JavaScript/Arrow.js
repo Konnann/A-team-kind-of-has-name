@@ -3,7 +3,7 @@ class Arrow{
         this.x = 0;
         this.y = 0;
         this.liveArr = false;
-        this.speed = 10;
+        this.speed = 15;
         this.y_max = 0;
     }
     
@@ -25,9 +25,12 @@ class Arrow{
         if(!this.liveArr){
             return;
         }
+
         this.y-=this.speed;
         if(this.y<this.y_max){
             this.liveArr=false;
+            this.y=0;
+            this.x=0;
         }
 
     }
