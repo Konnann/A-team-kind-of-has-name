@@ -6,33 +6,33 @@ class Ball {
         this.isHit = false;
     }
 
-    x() {
+    getX() {
         return this.x;
     }
 
-    y() {
+    getY() {
         return this.y;
     }
 
-    r() {
+    getR() {
         return this.r;
     }
 
-    draw = function (ctx) {
+    draw(ctx) {
         ctx.fillStyle = 'black';
         ctx.beginPath();
 
         ctx.arc(
             this.x,
             this.y,
-            this.radius,
+            this.r,
             0,
             Math.PI * 2,
             false
         );
         ctx.closePath();
         ctx.fill();
-    }
+    };
 
     update(pL) {
         if (pL != undefined) {
