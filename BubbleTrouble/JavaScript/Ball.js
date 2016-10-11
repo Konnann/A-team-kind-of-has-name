@@ -4,6 +4,9 @@ class Ball {
         this.y = y;
         this.r = r;
         this.isHit = false;
+        this.vx = 5;
+        this.vy = 5;
+        this.gravity = 0.5;
     }
 
     getX() {
@@ -34,31 +37,47 @@ class Ball {
         ctx.fill();
     };
 
-    update(pL) {
+    collidedWithProjectile(pL) {
         if (pL != undefined) {
             let xCollides = (pL.x >= this.x - this.r && pL.x <= this.x + this.r);
-            if (xCollides && (this.y <= pL.y - pL.height))//top point below project top point
+            if (xCollides && (this.y >= pL.y))//top point below project top point
             {
                 this.isHit = true;
+                console.log("Ball isHit : " + this.isHit);
             }
-            else if (Math.sqrt((this.x - pL.x)*(this.x - pL.x) +
-                    (this.y - (pL.y - pL.height)) * (this.y - (pL.y - pL.height))
+            else if (Math.sqrt((this.x - pL.x) * (this.x - pL.x) +
+                    (this.y - pL.y) * (this.y - pL.y )
                 ) <= this.r
             ) {
                 this.isHit = true;
             }
-
         }
     }
 
-    split(balls)
-    {
-        let ball1 = new Ball(this.x - 3,this.y + 3, this.r);
-        let ball2 = new Ball(this.x + 3,this.y + 3, this.r);
-        //delete this ball in balls. Find where it is here or in main update ?
-        balls.add(ball1).add(ball2);
+    update(pL) {
+        this.collidedWithProjectile(pL);
+        if (this.x + this.r >= canvas.width || this.x - this.r <= 0)
+            this.vx = -this.vx;
+        if (this.y + this.r >= canvas.height || this.y - this.r <= 0) {
+            this.vy = -this.vy;
+            if (this.y + this.r >= canvas.height) {
+                this.y = canvas.height - this.r;
+                this.vy -= this.gravity;
+            }
+        }
+        this.vy += this.gravity;
+        this.x += this.vx;
+        this.y += this.vy;
 
-        //delete ball ?
+    }
+
+    splitToBalls(balls) {
+        let ball1 = new Ball(this.x - 100, this.y + 3, this.r);
+        let ball2 = new Ball(this.x + 100, this.y + 3, this.r);
+
+        balls.push(ball1);
+        balls.push(ball2);
+        this.isHit = false;
     }
 }
 

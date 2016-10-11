@@ -1,12 +1,15 @@
-
 //main, don't write anything else here
-function start(){
+function start() {
     update();
     render();
     requestAnimationFrame(start);
 }
-var ball = new Ball(200,200,10);
+
+var ball = new Ball(200, 200, 10);
+var balls = [];
+balls.push(ball);
 
 var arr = new Arrow();
-arr.shoot(400,600);
+arr.shoot(400, 600);
+
 start();
