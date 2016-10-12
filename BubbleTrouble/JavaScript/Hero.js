@@ -1,6 +1,7 @@
 class Hero {
 
-    constructor() {
+    constructor(currentLife) {
+        this.life = currentLife;
         this.x = 400;
         this.y = 544; // canvas height - sprite height
         this.height = 56;
@@ -10,8 +11,11 @@ class Hero {
         this.isMovingRight = false;
         this.spritesheet = new Image();
         this.spritesheet.src = "./src/hero_47-25x56.png";
+        this.heart = new Image();
+        this.heart.src = "./src/heart32x32.png";
         this.currentFrame = 0;
         this.isShooting = false;
+        this.isHit = false;
     }
 
     getX() {
@@ -71,7 +75,7 @@ class Hero {
         //collision detection
         for (let b of balls) {
             if (hero.intersects(b)) {
-                alert('You died');
+                this.isHit = true;
             }
         }
     }
@@ -79,7 +83,13 @@ class Hero {
 
 
     draw(ctx) {
-        
+
+        let heartX = 755;
+        for (let i = 1; i <= this.life; i++) {
+            ctx.drawImage(this.heart, heartX, 10);
+            heartX -= 35;
+        }
+
         //sprite animation
         if (this.isShooting) {
             ctx.drawImage(this.spritesheet, 0, 112, this.width, this.height, this.x, this.y, this.width, this.height);
@@ -95,11 +105,13 @@ class Hero {
             let imageX = this.currentFrame % 189;
             this.currentFrame += 47.25;
             ctx.drawImage(this.spritesheet, imageX, 56, this.width, this.height, this.x, this.y, this.width, this.height);
-            
+
         } else {
             ctx.drawImage(this.spritesheet, 0, 112, this.width, this.height, this.x, this.y, this.width, this.height);
         }
+
     }
+
 
 
 
