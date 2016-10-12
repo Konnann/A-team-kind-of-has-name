@@ -1,6 +1,7 @@
 var IsGameOver=false;
 function start() {
-    if(!IsGameOver) {
+
+    if(!IsGameOver && !victory) {
         update();
     }
     render();

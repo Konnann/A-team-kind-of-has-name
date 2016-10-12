@@ -17,8 +17,7 @@ function update(){
             console.log(i);
             console.log(balls);
 
-            if(balls.length==0 || balls.length == undefined){
-                IsGameOver=true;
+            if(balls.length == 0 || balls.length == undefined){
                 victory = true;
                 console.log('victory');
             }   

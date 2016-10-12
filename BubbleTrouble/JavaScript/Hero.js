@@ -76,7 +76,7 @@ class Hero {
         //collision detection
         for (let b of balls) {
             if (hero.intersects(b)) {
-                this.isHit = true;
+               this.isHit = true;
             }
         }
 
@@ -96,7 +96,7 @@ class Hero {
         }
 
         //sprite animation
-        if(!this.isHit) {
+        if(!this.isHit && !victory) {
             if (this.isShooting) {
                 ctx.drawImage(this.spritesheet, 0, 112, this.width, this.height, this.x, this.y, this.width, this.height);
                 this.isShooting = false;
