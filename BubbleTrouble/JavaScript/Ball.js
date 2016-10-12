@@ -79,9 +79,10 @@ class Ball {
     }
 
     splitToBalls(balls) {
-        if(this.gen>5){
+        if(this.gen>3){
             return;
         }
+        
         let ball1 = new Ball(this.x - 10, this.y + 3, this.r, - 1);
         let ball2 = new Ball(this.x + 10, this.y + 3, this.r, 1);
         ball1.gen=this.gen+1;
