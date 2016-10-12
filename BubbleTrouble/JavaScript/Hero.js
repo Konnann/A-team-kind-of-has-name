@@ -57,6 +57,7 @@ class Hero {
             }
         }
 
+
         //hero movement
         if (this.isMovingRight) {
             if(this.x + this.velocity < 800 - this.width) {
@@ -123,8 +124,6 @@ class Hero {
 
 
     shoot(){
-        //this.isMovingLeft = false;
-        //this.isMovingRight = false;
         arr.shoot(this.x, this.y);
     }
 

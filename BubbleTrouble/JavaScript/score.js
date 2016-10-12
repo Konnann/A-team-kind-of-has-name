@@ -1,15 +1,10 @@
-/**
- * Created by Kokosaish on 11.10.2016 г..
- */
+
 var points=0;
 function score() {
     
-    var c=document.getElementById("canvas");
-    var ctx=c.getContext("2d");
-    ctx.font = "10px serif";
-    ctx.strokeText="black";
-    ctx.fillText(`score ${points}` , 10 , 10)
+    var c = document.getElementById("canvas");
+    var ctx = c.getContext("2d");
+    ctx.font = "30px serif";
+    ctx.fillStyle = "#190000";
+    ctx.fillText(`SCORE: ${points}` , 10 , 30)
 }
-/**
- * Created by Kokosaish on 11.10.2016 г..
- */

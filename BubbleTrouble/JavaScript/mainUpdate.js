@@ -1,6 +1,6 @@
 //call all update functions from classes here
 function update(){
-    if(hero.isHit == false) {
+    if(hero.isHit == false && victory == false) {
         arr.update();
         hero.update();
         console.log(balls.length);
@@ -16,8 +16,11 @@ function update(){
             }
             console.log(i);
             console.log(balls);
-            if(balls.length==0){
+
+            if(balls.length==0 || balls.length == undefined){
                 IsGameOver=true;
+                victory = true;
+                console.log('victory');
             }   
         }
     } else {
@@ -36,7 +39,4 @@ function update(){
 
         }
     }
-    console.log(hero.isHit);
-
-
 }
