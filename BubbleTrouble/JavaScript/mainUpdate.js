@@ -4,23 +4,21 @@ function update(){
         arr.update();
         hero.update();
         console.log(balls.length);
-        let tempArr = Array.from(balls);
+        //let tempArr = Array.from(balls);
 
-        for (let i = 0; i < tempArr.length; i++) {
-            let flag = false;
-            if (tempArr[i].isHit) {
+        for (let i = 0; i < balls.length; i++) {
+            balls[i].update(arr);
+
+            if (balls[i].isHit) {
                 balls[i].splitToBalls(balls);
-                if (i == 0) {
-                    balls.shift();
-                } else {
-                    balls.splice(i, i);
-                }
+                balls.splice(i,1);
 
-                flag = true;
             }
             console.log(i);
             console.log(balls);
-            tempArr[i].update(arr);
+            if(balls.length==0){
+                IsGameOver=true;
+            }   
         }
     } else {
         window.addEventListener('click', function () {
@@ -40,7 +38,5 @@ function update(){
     }
     console.log(hero.isHit);
 
-    if(balls.length==0){
-        IsGameOver=true;
-    }
+
 }
