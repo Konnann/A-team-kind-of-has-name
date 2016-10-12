@@ -32,4 +32,10 @@ function render(){
         ctx.drawImage(freddie, 400, 0, 370, 600);
 
     }
+    if(IsGameOver){
+        ctx.font ="125px serif";
+        ctx.fillText("Oh, oh!", 230, 280);
+        ctx.font ="70px serif";
+        ctx.fillText("Out of lives!", 250, 340);
+    }
 }

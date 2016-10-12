@@ -79,6 +79,10 @@ class Hero {
                 this.isHit = true;
             }
         }
+
+        if(this.life <= 0){
+            IsGameOver = true;
+        }
     }
 
 

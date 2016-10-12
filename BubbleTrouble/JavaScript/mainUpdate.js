@@ -27,7 +27,7 @@ function update(){
         window.addEventListener('click', function () {
             continueGame = true;
         });
-        if (continueGame) {
+        if (continueGame && !IsGameOver) {
             let currentLife = hero.life - 1;
             hero = new Hero(currentLife);
             hero.isHit = false;
