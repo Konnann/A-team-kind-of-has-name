@@ -30,12 +30,17 @@ function update(){
             let currentLife = hero.life - 1;
             hero = new Hero(currentLife);
             hero.isHit = false;
-            ball = new Ball(200, 200, 10, 1);
+            ball = new Ball(50, 200, 10, 1);
             balls = [];
             balls.push(ball);
+            arr = new Arrow();
             continueGame = false;
 
         }
     }
     console.log(hero.isHit);
+
+    if(balls.length==0){
+        IsGameOver=true;
+    }
 }

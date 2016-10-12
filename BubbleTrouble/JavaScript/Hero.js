@@ -6,7 +6,7 @@ class Hero {
         this.y = 544; // canvas height - sprite height
         this.height = 56;
         this.width = 47.25;
-        this.velocity = 5;
+        this.velocity = 9;
         this.isMovingLeft = false;
         this.isMovingRight = false;
         this.spritesheet = new Image();
@@ -91,23 +91,29 @@ class Hero {
         }
 
         //sprite animation
-        if (this.isShooting) {
-            ctx.drawImage(this.spritesheet, 0, 112, this.width, this.height, this.x, this.y, this.width, this.height);
-            this.isShooting = false;
+        if(!this.isHit) {
+            if (this.isShooting) {
+                ctx.drawImage(this.spritesheet, 0, 112, this.width, this.height, this.x, this.y, this.width, this.height);
+                this.isShooting = false;
 
-        } else if (this.isMovingRight) {
-            //TODO: slow down frame rate
-            let imageX = this.currentFrame % 189;
-            this.currentFrame += 47.25;
-            ctx.drawImage(this.spritesheet, imageX, 0, this.width, this.height, this.x, this.y, this.width, this.height);
+            } else if (this.isMovingRight) {
+                //TODO: slow down frame rate
+                let imageX = this.currentFrame % 189;
+                this.currentFrame += 47.25;
+                ctx.drawImage(this.spritesheet, imageX, 0, this.width, this.height, this.x, this.y, this.width, this.height);
 
-        } else if (this.isMovingLeft) {
-            let imageX = this.currentFrame % 189;
-            this.currentFrame += 47.25;
-            ctx.drawImage(this.spritesheet, imageX, 56, this.width, this.height, this.x, this.y, this.width, this.height);
+            } else if (this.isMovingLeft) {
+                let imageX = this.currentFrame % 189;
+                this.currentFrame += 47.25;
+                ctx.drawImage(this.spritesheet, imageX, 56, this.width, this.height, this.x, this.y, this.width, this.height);
 
-        } else {
-            ctx.drawImage(this.spritesheet, 0, 112, this.width, this.height, this.x, this.y, this.width, this.height);
+            } else {
+                ctx.drawImage(this.spritesheet, 0, 112, this.width, this.height, this.x, this.y, this.width, this.height);
+
+            }
+        }else{
+            ctx.drawImage(this.spritesheet, 0, 0, this.width, this.height, this.x, this.y, this.width, this.height);
+
         }
 
     }
@@ -123,28 +129,30 @@ class Hero {
     }
 
     intersects(ball) {
+        let boundingBoxHalf = this.width/2 - 20;
         // /find distance between circle center and rect center (horizontal and vertical)
-        let horizontalDist = Math.abs(ball.x - (this.x + this.width / 2));
+        let ballR = ball.currentRadius;
+        let horizontalDist = Math.abs(ball.x - (this.x + boundingBoxHalf));
         let verticalDist = Math.abs(ball.y - (this.y + this.height / 2));
 
         //if the distance is bigger than half rect + half circle they're too far apart
-        if (horizontalDist > (this.width / 2) + ball.r) {
+        if (horizontalDist > boundingBoxHalf + ballR) {
             return false;
-        } else if (verticalDist > (this.height / 2) + ball.r) {
+        } else if (verticalDist > (this.height / 2) + ballR) {
             return false;
         }
         //if distance is less than half rect = definitely colliding
-        if (horizontalDist <= this.width / 2) {
+        if (horizontalDist <= boundingBoxHalf) {
             return true;
         } else if (verticalDist <= this.height / 2) {
             return true;
         }
 
         //check for collision at the corner , compare distance between circle and rectangle centers
-        let dX = horizontalDist - this.width / 2;
+        let dX = horizontalDist - boundingBoxHalf;
         let dY = verticalDist - this.height / 2;
 
-        if (dX * dX + dY * dY <= (ball.r * ball.r)) {
+        if (dX * dX + dY * dY <= (ballR * ballR)) {
             return true;
         } else {
             return false;

@@ -9,7 +9,7 @@ function start() {
         }
 }
 var hero = new Hero(5);
-var ball = new Ball(200, 200, 10, 1);
+var ball = new Ball(50, 200, 10, 1);
 var balls = [];
 balls.push(ball);
 var arr = new Arrow();

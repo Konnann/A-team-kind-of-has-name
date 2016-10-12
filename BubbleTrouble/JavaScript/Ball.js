@@ -8,6 +8,7 @@ class Ball {
         this.vy = 5;
         this.gravity = 0.5;
         this.gen = 1;
+        this.currentRadius = this.r*(5-this.gen);
     }
 
     getX() {
@@ -23,13 +24,13 @@ class Ball {
     }
 
     draw(ctx) {
-        ctx.fillStyle = 'black';
+        ctx.fillStyle = '#190000';
         ctx.beginPath();
 
         ctx.arc(
             this.x,
             this.y,
-            this.r*(5-this.gen),
+            this.currentRadius,
             0,
             Math.PI * 2,
             false
@@ -40,7 +41,7 @@ class Ball {
 
     collidedWithProjectile(pL) {
         if (pL != undefined) {
-            let xCollides = (pL.x >= this.x - this.r && pL.x <= this.x + this.r);
+            let xCollides = (pL.x >= this.x - this.currentRadius && pL.x <= this.x + this.currentRadius);
             if (xCollides && (this.y >= pL.y))//top point below project top point
             {
                 points++;
@@ -50,7 +51,7 @@ class Ball {
             }
             else if (Math.sqrt((this.x - pL.x) * (this.x - pL.x) +
                     (this.y - pL.y) * (this.y - pL.y )
-                ) <= this.r
+                ) <= this.currentRadius
             ) {
                 points++;
                 pL.liveArr=false;
@@ -90,6 +91,8 @@ class Ball {
         balls.push(ball1);
         balls.push(ball2);
         this.isHit = false;
+        ball1.currentRadius = this.r*(5-this.gen);
+        ball2.currentRadius = this.r*(5-this.gen);
     }
 }
 
