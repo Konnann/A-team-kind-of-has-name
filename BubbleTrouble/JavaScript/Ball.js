@@ -1,10 +1,10 @@
 class Ball {
-    constructor(x, y, r) {
+    constructor(x, y, r, velocityMultiplyer) {
         this.x = x;
         this.y = y;
         this.r = r;
         this.isHit = false;
-        this.vx = 5;
+        this.vx = 5 * velocityMultiplyer;
         this.vy = 5;
         this.gravity = 0.5;
     }
@@ -72,8 +72,8 @@ class Ball {
     }
 
     splitToBalls(balls) {
-        let ball1 = new Ball(this.x - 100, this.y + 3, this.r);
-        let ball2 = new Ball(this.x + 100, this.y + 3, this.r);
+        let ball1 = new Ball(this.x - 10, this.y + 3, this.r, - 1);
+        let ball2 = new Ball(this.x + 10, this.y + 3, this.r, 1);
 
         balls.push(ball1);
         balls.push(ball2);

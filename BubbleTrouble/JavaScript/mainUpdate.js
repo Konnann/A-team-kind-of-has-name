@@ -2,6 +2,7 @@
 function update(){
     arr.update();
     hero.update();
+    console.log(balls.length);
     for(let i = 0; i < balls.length; i ++)
     {
         let flag = false;
@@ -18,7 +19,8 @@ function update(){
 
             flag = true;
         }
-
+        console.log(i);
+        console.log(balls);
         balls[i].update(arr);
 
         if(flag) i --;

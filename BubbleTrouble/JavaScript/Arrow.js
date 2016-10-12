@@ -29,8 +29,8 @@ class Arrow{
         this.y-=this.speed;
         if(this.y<this.y_max){
             this.liveArr=false;
-            this.y=0;
-            this.x=0;
+            this.y=canvas.height;
+            this.x=canvas.heigth;
         }
 
     }
