@@ -1,10 +1,12 @@
-
+var IsGameOver=false;
 function start() {
+    if(!IsGameOver){
     update();
     render();
     
     requestAnimationFrame(start);
     score();
+        }
 }
 var hero = new Hero(5);
 var ball = new Ball(200, 200, 10, 1);

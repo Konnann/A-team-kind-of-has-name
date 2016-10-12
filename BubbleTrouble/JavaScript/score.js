@@ -1,7 +1,7 @@
 /**
  * Created by Kokosaish on 11.10.2016 г..
  */
-let points=0;
+var points=0;
 function score() {
     
     var c=document.getElementById("canvas");
