@@ -1,11 +1,13 @@
 /**
  * Created by Kokosaish on 11.10.2016 г..
  */
+let points=0;
 function score() {
-    var c=document.getElementById("myCanvas");
+    
+    var c=document.getElementById("canvas");
     var ctx=c.getContext("2d");
     ctx.strokeText="black";
-    ctx.fillText("Score is not working" , 10 , 10)
+    ctx.fillText(`score ${points}` , 10 , 10)
 }
 /**
  * Created by Kokosaish on 11.10.2016 г..

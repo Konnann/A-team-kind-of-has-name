@@ -12,4 +12,5 @@ function render(){
 
     ball.draw(ctx);
     hero.draw(ctx);
+    score();
 }

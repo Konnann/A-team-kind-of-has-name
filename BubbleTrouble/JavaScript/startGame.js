@@ -3,6 +3,7 @@ function start() {
     update();
     render();
     requestAnimationFrame(start);
+    score();
 }
 var hero = new Hero();
 var ball = new Ball(200, 200, 10, 1);

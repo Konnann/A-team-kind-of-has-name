@@ -43,6 +43,7 @@ class Ball {
             let xCollides = (pL.x >= this.x - this.r && pL.x <= this.x + this.r);
             if (xCollides && (this.y >= pL.y))//top point below project top point
             {
+                points++;
                 this.isHit = true;
                 pL.liveArr=false;
                 console.log("Ball isHit : " + this.isHit);
@@ -51,6 +52,7 @@ class Ball {
                     (this.y - pL.y) * (this.y - pL.y )
                 ) <= this.r
             ) {
+                points++;
                 pL.liveArr=false;
                 this.isHit = true;
             }
