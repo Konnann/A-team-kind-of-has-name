@@ -1,7 +1,7 @@
 class Arrow{
     constructor(){
         this.x = 0;
-        this.y = 0;
+        this.y = canvas.height;
         this.liveArr = false;
         this.speed = 15;
         this.y_max = 0;
