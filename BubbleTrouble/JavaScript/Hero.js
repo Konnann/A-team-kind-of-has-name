@@ -1,7 +1,7 @@
 class Hero {
 
     constructor() {
-        this.x = 0;
+        this.x = 400;
         this.y = 544; // canvas height - sprite height
         this.height = 56;
         this.width = 47.25;

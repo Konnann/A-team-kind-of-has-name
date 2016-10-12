@@ -3,10 +3,12 @@ function update(){
     arr.update();
     hero.update();
     console.log(balls.length);
-    for(let i = 0; i < balls.length; i ++)
+    let tempArr = Array.from(balls);
+
+    for(let i = 0; i < tempArr.length; i ++)
     {
         let flag = false;
-        if(balls[i].isHit)
+        if(tempArr[i].isHit)
         {
             balls[i].splitToBalls(balls);
             if(i ==0 )
@@ -21,8 +23,7 @@ function update(){
         }
         console.log(i);
         console.log(balls);
-        balls[i].update(arr);
+        tempArr[i].update(arr);
 
-        if(flag) i --;
     }
 }
