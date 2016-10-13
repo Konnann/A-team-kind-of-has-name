@@ -1,5 +1,5 @@
 
-var points=0;
+
 function score() {
     
     var c = document.getElementById("canvas");

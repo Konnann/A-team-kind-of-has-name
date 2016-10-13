@@ -17,4 +17,5 @@ balls.push(ball);
 var arr = new Arrow();
 var continueGame = false;
 var victory = false;
+var points=0;
 start();

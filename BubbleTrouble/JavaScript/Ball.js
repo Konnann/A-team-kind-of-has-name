@@ -80,7 +80,7 @@ class Ball {
     }
 
     splitToBalls(balls) {
-        if(this.gen>3){
+        if(this.gen>2){
             return;
         }
         
@@ -91,8 +91,8 @@ class Ball {
         balls.push(ball1);
         balls.push(ball2);
         this.isHit = false;
-        ball1.currentRadius = this.r*(5-this.gen);
-        ball2.currentRadius = this.r*(5-this.gen);
+        ball1.currentRadius = this.r*(5-ball1.gen);
+        ball2.currentRadius = this.r*(5-ball2.gen);
     }
 }
 

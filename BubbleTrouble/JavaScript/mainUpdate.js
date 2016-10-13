@@ -1,6 +1,6 @@
 //call all update functions from classes here
 function update(){
-    if(hero.isHit == false && victory == false) {
+    if(hero.isHit == false && victory == false){
         arr.update();
         hero.update();
         console.log(balls.length);
@@ -20,6 +20,7 @@ function update(){
             if(balls.length == 0 || balls.length == undefined){
                 victory = true;
                 console.log('victory');
+                audo.pause();
             }   
         }
     } else {
@@ -35,7 +36,7 @@ function update(){
             balls.push(ball);
             arr = new Arrow();
             continueGame = false;
-
+            points = 0;
         }
     }
 }

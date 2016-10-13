@@ -82,6 +82,7 @@ class Hero {
 
         if(this.life <= 0){
             IsGameOver = true;
+            audo.pause();
         }
     }
 
